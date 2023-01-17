@@ -1,0 +1,26 @@
+{
+    "katas": [
+        {
+            "name": "Apply a minimal CSS Reset",
+            "steps": [
+                {
+                    "name": "1. Reset box sizing",
+                    "solution": "*, *::before, *::after { box-sizing: border-box; }"
+                },
+                {
+                    "name": "2. Make multimedia responsive",
+                    "solution": "img, picture, svg, video { display: block; max-width: 100%; }"
+                },
+                {
+                    "name": "3. Make all text inherit the font",
+                    "solution": "input, textarea, button, select { font: inherit; }"
+                }
+            ],
+            "content": "placeholder content for kata #1"
+        },
+        {
+            "name": "placeholder kata #2",
+            "content": "placeholder content for kata #2"
+        }
+    ]
+}
