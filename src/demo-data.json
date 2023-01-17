@@ -5,14 +5,27 @@
             "steps": [
                 {
                     "name": "1. Reset box sizing",
-                    "solution": "*, *::before, *::after { box-sizing: border-box; }"
+                    "solution": "*, *::before, *::after { box-sizing: border-box; }",
+                    "notes": [
+                        "What is the box sizing? What are the alternatives? What is the default? ❌",
+                        "Why do we need the `::before` and `::after` pseudo-elements? These pseudo-elements control the content **inside** the tags but **before / after** the actual content. __*but why do we need them?*__❌"
+                    ]
                 },
                 {
                     "name": "2. Make multimedia responsive",
-                    "solution": "img, picture, svg, video { display: block; max-width: 100%; }"
+                    "hints": [
+                        "**I** **p**lay **s**ome **video**games"
+                    ],
+                    "solution": "img, picture, svg, video { display: block; max-width: 100%; }",
+                    "notes": [
+                        "Why do we need `display: block`? What's the default? ❌"
+                    ]
                 },
                 {
                     "name": "3. Make all text inherit the font",
+                    "hints": [
+                        "_**I** **t**ry **b**efore **sel**ling_"
+                    ],
                     "solution": "input, textarea, button, select { font: inherit; }"
                 }
             ],
