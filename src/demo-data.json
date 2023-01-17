@@ -6,9 +6,15 @@
                 {
                     "name": "1. Reset box sizing",
                     "solution": "*, *::before, *::after { box-sizing: border-box; }",
-                    "notes": [
-                        "What is the box sizing? What are the alternatives? What is the default? ❌",
-                        "Why do we need the `::before` and `::after` pseudo-elements? These pseudo-elements control the content **inside** the tags but **before / after** the actual content. __*but why do we need them?*__❌"
+                    "questions": [
+                        {
+                            "question": "What is the box sizing? What are the alternatives? What is the default?",
+                            "answer": "❌"
+                        },
+                        {
+                            "question": "Why do we need the `::before` and `::after` pseudo-elements?",
+                            "answer": "These pseudo-elements control the content **inside** the tags but **before / after** the actual content. __*but why do we need them?*__❌"
+                        }
                     ]
                 },
                 {
@@ -17,8 +23,11 @@
                         "**I** **p**lay **s**ome **video**games"
                     ],
                     "solution": "img, picture, svg, video { display: block; max-width: 100%; }",
-                    "notes": [
-                        "Why do we need `display: block`? What's the default? ❌"
+                    "questions": [
+                        {
+                            "question": "Why do we need `display: block`? What's the default?",
+                            "answer": "❌"
+                        }
                     ]
                 },
                 {

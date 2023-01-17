@@ -37,27 +37,26 @@ function Instructions(props) {
 
 function Solution(props) {
   const hints = setHints(props.step);
-  const notes = setNotes(props.step);
+  const questions = setQuestions(props.step);
 
   return(
     <section>
       <h2>{props.step.name}</h2>
       {hints}
       <code id="code-solution">{props.step.solution}</code>
-      {notes}
+      {questions}
       <p>Placeholder for <i>Solution</i></p>
     </section>
   );
 }
 
 function Navigation(props) {
+  const label = `Current Step: ${props.step} - Increase`;
 
   return(
     <section>
       <h2>Placeholder for Navigation section</h2>
-      <button
-        onClick={props.onClick}
-      >Current Step: {props.step} - Increase</button>
+      <button onClick={props.onClick}>{label}</button>
     </section>
   );
 }
@@ -82,17 +81,17 @@ function setHints(step) {
   );
 }
 
-function setNotes(step) {
-  if (!step.notes) return "";
+function setQuestions(step) {
+  if (!step.questions) return "";
 
-  const notes = step.notes.map((note, index) => 
-    <li key={index}>{note}</li>
+  const questions = step.questions.map((note, index) => 
+    <li key={index}>{note.question} {note.answer}</li>
   );
 
   return (
     <div>
-      <p><b>Notes:</b></p>
-      <ul>{notes}</ul>
+      <p><b>Questions:</b></p>
+      <ul>{questions}</ul>
     </div>
   );
 }
