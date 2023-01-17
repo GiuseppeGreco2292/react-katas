@@ -5,58 +5,58 @@ import demoData from './demo-data.json';
 
 function App(props) {
 
-  const [step, setStep] = useState(0);
-
+  const [stepNumber, setStep] = useState(0);
   const kata = props.kata;
+  const step = kata.steps[stepNumber];
 
-  function increaseStep(step) {
+  function increaseStep(stepNumber) {
     const maxStep = kata.steps.length;
-    const nextStep = (step + 1) >= maxStep ? 0 : step + 1;
+    const nextStep = (stepNumber + 1) >= maxStep ? 0 : stepNumber + 1;
     setStep(nextStep);
   }
 
   return (
     <main>
       <h1>Kata Navigator</h1>
-      <Instructions name={kata.name} />
-      <Solution step={kata.steps[step]} />
-      <Navigation onClick={() => increaseStep(step)} step={step}/>
+      <h2>{kata.name}</h2>
+      <Instructions step={step} />
+      <Solution step={step} />
+      <Navigation onClick={() => increaseStep(stepNumber)} stepNumber={stepNumber}/>
     </main>
   );
 }
 
 function Instructions(props) {
+  const hints = getHints(props.step);
 
   return(
     <section>
-      <h2>{props.name}</h2>
-      <p>Placeholder for <i>Instructions</i></p>
+      <h3>{props.step.name}</h3>
+      {hints}
+      <p><i>Placeholder for Instructions</i></p>
     </section>
   );
 }
 
 function Solution(props) {
-  const hints = setHints(props.step);
-  const questions = setQuestions(props.step);
+  const questions = getQuestions(props.step);
 
   return(
     <section>
-      <h2>{props.step.name}</h2>
-      {hints}
       <code id="code-solution">{props.step.solution}</code>
       {questions}
-      <p>Placeholder for <i>Solution</i></p>
+      <p><i>Placeholder for Solution</i></p>
     </section>
   );
 }
 
 function Navigation(props) {
-  const label = `Current Step: ${props.step} - Increase`;
+  const label = `Current Step: ${props.stepNumber} - Increase`;
 
   return(
     <section>
-      <h2>Placeholder for Navigation section</h2>
       <button onClick={props.onClick}>{label}</button>
+      <p><i>Placeholder for Navigation</i></p>
     </section>
   );
 }
@@ -66,7 +66,7 @@ function pickKata() {
   return demoData.katas[0];
 }
 
-function setHints(step) {
+function getHints(step) {
   if (!step.hints) return "";
 
   const hints = step.hints.map((hint, index) => 
@@ -81,7 +81,7 @@ function setHints(step) {
   );
 }
 
-function setQuestions(step) {
+function getQuestions(step) {
   if (!step.questions) return "";
 
   const questions = step.questions.map((note, index) => 
