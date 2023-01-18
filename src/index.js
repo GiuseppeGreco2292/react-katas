@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
+import MarkdownView from 'react-showdown';
 import './index.css';
 import demoData from './demo-data.json';
 
@@ -21,7 +22,7 @@ function App(props) {
       <h2>{kata.name}</h2>
       <Instructions step={step} />
       <Solution step={step} />
-      <Navigation onClick={() => increaseStep(stepNumber)} stepNumber={stepNumber}/>
+      <Navigation onClick={() => increaseStep(stepNumber)} stepNumber={stepNumber} />
     </main>
   );
 }
@@ -29,7 +30,7 @@ function App(props) {
 function Instructions(props) {
   const hints = getHints(props.step);
 
-  return(
+  return (
     <section>
       <h3>{props.step.name}</h3>
       {hints}
@@ -41,7 +42,7 @@ function Instructions(props) {
 function Solution(props) {
   const questions = getQuestions(props.step);
 
-  return(
+  return (
     <section>
       <code id="code-solution">{props.step.solution}</code>
       {questions}
@@ -53,7 +54,7 @@ function Solution(props) {
 function Navigation(props) {
   const label = `Current Step: ${props.stepNumber} - Increase`;
 
-  return(
+  return (
     <section>
       <button onClick={props.onClick}>{label}</button>
       <p><i>Placeholder for Navigation</i></p>
@@ -69,9 +70,16 @@ function pickKata() {
 function getHints(step) {
   if (!step.hints) return "";
 
-  const hints = step.hints.map((hint, index) => 
-    <li key={index}><i>{hint}</i></li>
-  );
+  const hints = step.hints.map((hint, index) => {
+    const markdown = <MarkdownView
+      key={index}
+      markdown={hint}
+    />
+    
+    return (
+      <li key={index}><i>{markdown}</i></li>
+    );
+  });
 
   return (
     <div>
@@ -84,9 +92,17 @@ function getHints(step) {
 function getQuestions(step) {
   if (!step.questions) return "";
 
-  const questions = step.questions.map((note, index) => 
-    <li key={index}>{note.question} {note.answer}</li>
-  );
+  const questions = step.questions.map((question, index) => {
+
+    const markdown = <MarkdownView
+      key={index}
+      markdown={`${question.question}  ${question.answer}`}
+    />
+
+    return (
+      <li key={index}>{markdown}</li>
+    );
+  });
 
   return (
     <div>
