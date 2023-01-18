@@ -13,6 +13,7 @@ code {
 }
 
 #code-solution {
+  display: inline-block;
   background-color: #2B2B2B;
   color: #A9B7C6;
   padding: 10px;
