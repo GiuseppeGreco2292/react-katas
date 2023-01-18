@@ -8,8 +8,8 @@
                     "solution": "*, *::before, *::after { box-sizing: border-box; }",
                     "questions": [
                         {
-                            "question": "What is the box sizing? What are the alternatives? What is the default?",
-                            "answer": "❌"
+                            "question": "What is `box-sizing`? What are the alternatives? What is the default?",
+                            "answer": "`box-sizing` determines what is influenced by `width` and `height` properties. `border-box` includes borders and padding (whereas the default `content-box` will not include them)."
                         },
                         {
                             "question": "Why do we need the `::before` and `::after` pseudo-elements?",
@@ -26,7 +26,7 @@
                     "questions": [
                         {
                             "question": "Why do we need `display: block`? What's the default?",
-                            "answer": "❌"
+                            "answer": "`display: block` starts on a new line, taking up the whole width. Otherwise they default to `inline` (current line, `width` and `height` have no effect)."
                         }
                     ]
                 },
@@ -37,12 +37,7 @@
                     ],
                     "solution": "input, textarea, button, select { font: inherit; }"
                 }
-            ],
-            "content": "placeholder content for kata #1"
-        },
-        {
-            "name": "placeholder kata #2",
-            "content": "placeholder content for kata #2"
+            ]
         }
     ]
 }
