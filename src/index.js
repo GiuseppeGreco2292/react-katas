@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import MarkdownView from 'react-showdown';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import './index.css';
 import demoData from './demo-data.json';
 
@@ -44,7 +46,11 @@ function Solution(props) {
 
   return (
     <section>
-      <code id="code-solution">{props.step.solution}</code>
+      <SyntaxHighlighter
+        language="css"
+        style={atomOneDark}
+        wrapLongLines={true}
+      >{props.step.solution}</SyntaxHighlighter>
       {questions}
       <p><i>Placeholder for Solution</i></p>
     </section>
