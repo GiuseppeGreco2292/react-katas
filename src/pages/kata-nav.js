@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { Page404 } from './404';
 import MarkdownView from 'react-showdown';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import demoData from '../demo-data.json';
 
-export const KataNavigator = (props) => {
-
+export const KataNavigator = () => {
     const [stepNumber, setStep] = useState(0);
-    const kata = props.kata;
+    const { id } = useParams()
+
+    if (id != 1)
+        return (
+            <Page404 />
+        );
+
+    const kata = demoData.katas.find(kata => kata.id == id);
     const step = kata.steps[stepNumber];
 
     function increaseStep(stepNumber) {
@@ -18,6 +27,7 @@ export const KataNavigator = (props) => {
     return (
         <main>
             <h1>Kata Navigator</h1>
+            <Link to="/"><button>Home</button></Link>
             <h2>{kata.name}</h2>
             <Instructions step={step} />
             <Solution step={step} />

@@ -1,6 +1,7 @@
 {
     "katas": [
         {
+            "id": 1,
             "name": "Apply a minimal CSS Reset",
             "steps": [
                 {
