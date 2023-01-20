@@ -10,12 +10,11 @@ export const KataNavigator = () => {
     const [stepNumber, setStep] = useState(0);
     const { id } = useParams()
 
-    if (id != 1)
+    const kata = demoData.katas.find(kata => kata.id == id);
+    if (!kata)
         return (
             <Page404 />
         );
-
-    const kata = demoData.katas.find(kata => kata.id == id);
     const step = kata.steps[stepNumber];
 
     function increaseStep(stepNumber) {
