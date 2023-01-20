@@ -17,8 +17,12 @@ code {
     monospace;
 }
 
+header * {
+  margin: 0px;
+}
+
 .center {
-  min-height: 100vh;
+  min-height: 100%;
   text-align: center;
   display: grid;
   place-items: center;
