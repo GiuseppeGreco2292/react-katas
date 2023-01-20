@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Home } from './pages/home';
@@ -26,17 +26,3 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
-
-/*
-
-    const [stepNumber, setStep] = useState(0);
-    const kata = props.kata;
-    const step = kata.steps[stepNumber];
-
-    function increaseStep(stepNumber) {
-        const maxStep = kata.steps.length;
-        const nextStep = (stepNumber + 1) >= maxStep ? 0 : stepNumber + 1;
-        setStep(nextStep);
-    }
-
-*/
