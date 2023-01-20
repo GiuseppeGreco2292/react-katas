@@ -6,7 +6,10 @@
             "steps": [
                 {
                     "name": "1. Reset box sizing",
-                    "solution": "*, *::before, *::after { box-sizing: border-box; }",
+                    "solution": {
+                        "code": "*, *::before, *::after { box-sizing: border-box; }",
+                        "language": "css"
+                    },
                     "questions": [
                         {
                             "question": "What is `box-sizing`? What are the alternatives? What is the default?",
@@ -23,7 +26,10 @@
                     "hints": [
                         "**I** **p**lay **s**ome **video**games"
                     ],
-                    "solution": "img, picture, svg, video { display: block; max-width: 100%; }",
+                    "solution": {
+                        "code": "img, picture, svg, video { display: block; max-width: 100%; }",
+                        "language": "css"
+                    },
                     "questions": [
                         {
                             "question": "Why do we need `display: block`? What's the default?",
@@ -36,7 +42,10 @@
                     "hints": [
                         "_**I** **t**ry **b**efore **sel**ling_"
                     ],
-                    "solution": "input, textarea, button, select { font: inherit; }"
+                    "solution": {
+                        "code": "input, textarea, button, select { font: inherit; }",
+                        "language": "css"
+                    }
                 }
             ]
         }

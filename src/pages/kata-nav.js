@@ -54,10 +54,10 @@ function Solution(props) {
     return (
         <section>
             <SyntaxHighlighter
-                language="css"
+                language={props.step.solution.langue}
                 style={atomOneDark}
                 wrapLongLines={true}
-            >{props.step.solution}</SyntaxHighlighter>
+            >{props.step.solution.code}</SyntaxHighlighter>
             {questions}
             <p><i>Placeholder for Solution</i></p>
         </section>
