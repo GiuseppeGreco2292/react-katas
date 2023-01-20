@@ -10,7 +10,7 @@ export const KataNavigator = () => {
     const [stepNumber, setStep] = useState(0);
     const { id } = useParams()
 
-    const kata = demoData.katas.find(kata => kata.id == id);
+    const kata = demoData.katas.find(kata => kata.id === Number(id));
     if (!kata)
         return (
             <Page404 />
