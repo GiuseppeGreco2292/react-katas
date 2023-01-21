@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Page404 } from './404';
+import { KeyIcon } from '../components/key-icon';
 import MarkdownView from 'react-showdown';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
@@ -64,12 +65,33 @@ function Solution(props) {
 }
 
 function Navigation(props) {
-    const label = `Current Step: ${props.stepNumber} - Increase`;
+    const handleKeyPress = useCallback((e) => {
+
+        switch (e.key) {
+            case 'ArrowRight':
+                props.onClick();
+        }
+
+    }, []);
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyPress);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyPress);
+        };
+    }, [handleKeyPress]);
+
+    const label = `Step: ${props.stepNumber + 1} - Next`;
 
     return (
         <section>
             <button onClick={props.onClick}>{label}</button>
-            <p><i>Placeholder for Navigation</i></p>
+            <nav>
+                <KeyIcon keyboard="←" explanation="Previous Step" />
+                <KeyIcon keyboard="→" explanation="Next Step" />
+            </nav>
+            <p><em>Placeholder for Navigation</em></p>
         </section>
     );
 }

@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -26,4 +32,24 @@ header * {
   text-align: center;
   display: grid;
   place-items: center;
+}
+
+.key-display {
+  display: inline-block;
+  margin: 4px;
+}
+
+.key-icon {
+  display: inline-block;
+  text-align: center;
+  background-color: grey;
+  padding: 4px;
+  margin: 4px;
+  border-radius: 4px;
+  min-width: 29px;
+}
+
+.key-explanation {
+  font-size: 10px;
+  font-family: monospace;
 }
