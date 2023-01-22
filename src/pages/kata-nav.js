@@ -18,10 +18,16 @@ export const KataNavigator = () => {
         );
     const step = kata.steps[stepNumber];
 
-    function increaseStep(stepNumber) {
-        const maxStep = kata.steps.length;
-        const nextStep = (stepNumber + 1) >= maxStep ? 0 : stepNumber + 1;
-        setStep(nextStep);
+    function navigateSteps(stepNumber, increase) {
+        const maxStep = kata.steps.length - 1;
+        const nextStep = stepNumber + increase;
+
+        if (nextStep < 0 || nextStep > maxStep) {
+            setStep(0);
+        } else {
+            setStep(nextStep);
+        }
+
     }
 
     return (
@@ -31,7 +37,7 @@ export const KataNavigator = () => {
             <h2>{kata.name}</h2>
             <Instructions step={step} />
             <Solution step={step} />
-            <Navigation onClick={() => increaseStep(stepNumber)} stepNumber={stepNumber} />
+            <Navigation handleNavigation={navigateSteps} stepNumber={stepNumber} />
         </main>
     );
 }
@@ -66,13 +72,17 @@ function Solution(props) {
 
 function Navigation(props) {
     const handleKeyPress = useCallback((e) => {
-
         switch (e.key) {
             case 'ArrowRight':
-                props.onClick();
+                props.handleNavigation(props.stepNumber, 1);
+                break;
+            case 'ArrowLeft':
+                props.handleNavigation(props.stepNumber, -1);
+                break;
+            default:
+                break;
         }
-
-    }, []);
+    }, [props.handleNavigation]);
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeyPress);
@@ -86,7 +96,7 @@ function Navigation(props) {
 
     return (
         <section>
-            <button onClick={props.onClick}>{label}</button>
+            <button onClick={() => props.handleNavigation(props.stepNumber, 1)}>{label}</button>
             <nav>
                 <KeyIcon keyboard="←" explanation="Previous Step" />
                 <KeyIcon keyboard="→" explanation="Next Step" />
