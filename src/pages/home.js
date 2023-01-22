@@ -6,7 +6,6 @@ export const Home = () => {
 
     return (
         <main>
-            <h1>Welcome to Kata Navigator</h1>
             <h2>Please select a Kata to get Started</h2>
 
             <SelectKata />

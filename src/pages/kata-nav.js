@@ -32,8 +32,6 @@ export const KataNavigator = () => {
 
     return (
         <main>
-            <h1>Kata Navigator</h1>
-            <Link to="/"><button>Home</button></Link>
             <h2>{kata.name}</h2>
             <Instructions step={step} />
             <Solution step={step} />
