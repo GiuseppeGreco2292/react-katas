@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Header } from './components/header';
 import { Home } from './pages/home';
 import { KataNavigator } from './pages/kata-nav';
 import { Page404 } from './pages/404';
@@ -10,7 +9,6 @@ import './index.css';
 function App() {
   return (
     <div>
-      <Header />
       <Routes>
         <Route path={"/"} element={<Home />} />
         <Route path={"/kata-nav/:id"} element={<KataNavigator />} />

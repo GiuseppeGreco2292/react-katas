@@ -6,6 +6,7 @@ import MarkdownView from 'react-showdown';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import demoData from '../demo-data.json';
+import { Header } from '../components/header';
 
 export const KataNavigator = () => {
     const [stepNumber, setStep] = useState(0);
@@ -32,6 +33,7 @@ export const KataNavigator = () => {
 
     return (
         <main>
+            <Header hasHomeLink={true} />
             <h2>{kata.name}</h2>
             <Instructions step={step} />
             <Solution step={step} />

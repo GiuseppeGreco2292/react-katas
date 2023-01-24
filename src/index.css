@@ -1,21 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --large-margin: 54px;
+  --small-margin: 22px;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  margin: 0px;
+  padding: 0px;
+  font: inherit;
 }
 
 html {
   color-scheme: dark light;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Quicksand', 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
 }
 
 code {
@@ -32,6 +50,60 @@ header * {
   text-align: center;
   display: grid;
   place-items: center;
+}
+
+h1 {
+  font-size: 64px;
+  margin-top: var(--large-margin);
+  text-align: center;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 48px;
+  margin-bottom: var(--large-margin);
+  font-weight: 600;
+}
+
+main {
+  margin-top: var(--large-margin);
+  display: flex;
+  justify-content: space-around;
+}
+
+.home-section {
+  text-align: center;
+}
+
+.kata-card-name {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.kata-card-languages {
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 800px) {
+  h1 {
+    font-size: 32px;
+    margin-top: var(--small-margin);
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: var(--small-margin);
+  }
+
+  main {
+    margin-top: var(--small-margin);
+  }
+
+  #info-section {
+    display: none;
+  }
 }
 
 .key-display {
