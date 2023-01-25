@@ -67,12 +67,32 @@ h2 {
 
 main {
   margin-top: var(--large-margin);
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 4fr 4fr 1fr;
 }
 
 .home-section {
   text-align: center;
+}
+
+#select-section {
+  grid-column: 2/3;
+}
+
+#info-section {
+  grid-column: 3/4;
+}
+
+.kata-card {
+  background: darkgray;
+  margin: var(--small-margin);
+  padding: var(--small-margin);
+  text-align: left;
+  cursor: pointer;
+}
+
+.kata-card.kata-card-active {
+  color: black;
 }
 
 .kata-card-name {
@@ -84,6 +104,22 @@ main {
   font-size: 16px;
   font-weight: 400;
   text-transform: uppercase;
+}
+
+.infobox {
+  background: darkgray;
+  text-align: left;
+  padding: var(--small-margin);
+}
+
+.infobox-info-type {}
+
+.infobox-info-value {}
+
+.home-train-btn {
+  margin-top: 42px;
+  font-size: 30px;
+  padding: 15px 25px;
 }
 
 @media screen and (max-width: 800px) {
@@ -99,6 +135,8 @@ main {
 
   main {
     margin-top: var(--small-margin);
+    display: grid;
+    grid-template-columns: 1fr minmax(300, 3fr) 1fr;
   }
 
   #info-section {

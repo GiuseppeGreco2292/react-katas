@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-export const KataCard = ({ name, languages }) => {
+export const KataCard = ({ id, name, languages, handleClick, isActive }) => {
+    const activeClass = isActive ? 'kata-card-active' : '';
     return (
-        <div className="kata-card">
+        <div className={`kata-card ${activeClass}`} onClick={() => handleClick(id)} >
             <h3 className="kata-card-name">{name}</h3>
             <p className="kata-card-languages">{languages}</p>
         </div>
