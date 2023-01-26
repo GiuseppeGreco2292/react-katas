@@ -32,9 +32,8 @@ export const KataNavigator = () => {
     }
 
     return (
-        <main>
-            <Header hasHomeLink={true} />
-            <h2>{kata.name}</h2>
+        <main className="kata-main">
+            <h1 className="kata-h1">{kata.name}</h1>
             <Instructions step={step} />
             <Solution step={step} />
             <Navigation handleNavigation={navigateSteps} stepNumber={stepNumber} />
@@ -46,8 +45,8 @@ function Instructions(props) {
     const hints = getHints(props.step);
 
     return (
-        <section>
-            <h3>{props.step.name}</h3>
+        <section className="kata-section">
+            <h2 class="instructions-h2">{props.step.name}</h2>
             {hints}
             <p><i>Placeholder for Instructions</i></p>
         </section>
@@ -58,7 +57,7 @@ function Solution(props) {
     const questions = getQuestions(props.step);
 
     return (
-        <section>
+        <section className="kata-section">
             <SyntaxHighlighter
                 language={props.step.solution.langue}
                 style={atomOneDark}
@@ -95,7 +94,7 @@ function Navigation(props) {
     const label = `Step: ${props.stepNumber + 1} - Next`;
 
     return (
-        <section>
+        <section className="kata-nav">
             <button onClick={() => props.handleNavigation(props.stepNumber, 1)}>{label}</button>
             <nav>
                 <KeyIcon keyboard="←" explanation="Previous Step" />
