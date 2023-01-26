@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Header } from '../components/header';
 import { InfoRow } from '../components/info-row';
 import { KataCard } from '../components/kata-card';
 import demoData from '../demo-data.json';
@@ -12,8 +11,8 @@ export const Home = () => {
 
     return (
         <React.Fragment>
-            <Header hasHomeLink={false} />
-            <main>
+            <h1 className="home-h1">Simple Kata Navigator</h1>
+            <main className="home-main">
                 <KataSelect
                     katas={katas}
                     activeId={activeId}

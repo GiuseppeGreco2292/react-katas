@@ -1,3 +1,5 @@
+/* --- GENERAL --- */
+
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -45,7 +47,7 @@ header * {
   margin: 0px;
 }
 
-.center {
+.center-content {
   min-height: 100%;
   text-align: center;
   display: grid;
@@ -55,7 +57,6 @@ header * {
 h1 {
   font-size: 64px;
   margin-top: var(--large-margin);
-  text-align: center;
   font-weight: 600;
 }
 
@@ -71,6 +72,31 @@ a {
 
 main {
   margin-top: var(--large-margin);
+}
+
+@media screen and (max-width: 800px) {
+  h1 {
+    font-size: 32px;
+    margin-top: var(--small-margin);
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: var(--small-margin);
+  }
+
+  main {
+    margin-top: var(--small-margin);
+  }
+}
+
+/* --- HOME --- */
+
+h1.home-h1 {
+  text-align: center;
+}
+
+main.home-main {
   display: grid;
   grid-template-columns: 1fr 4fr 4fr 1fr;
 }
@@ -121,10 +147,6 @@ main {
   padding: var(--small-margin);
 }
 
-.infobox-info-type {}
-
-.infobox-info-value {}
-
 .home-train-btn {
   margin-top: 42px;
   font-size: 30px;
@@ -136,19 +158,8 @@ main {
 }
 
 @media screen and (max-width: 800px) {
-  h1 {
-    font-size: 32px;
-    margin-top: var(--small-margin);
-  }
 
-  h2 {
-    font-size: 24px;
-    margin-bottom: var(--small-margin);
-  }
-
-  main {
-    margin-top: var(--small-margin);
-    display: grid;
+  main.home-main {
     grid-template-columns: 10% 80% 10%;
   }
 
@@ -182,6 +193,8 @@ main {
   }
 
 }
+
+/* --- NAVIGATOR --- */
 
 .key-display {
   display: inline-block;
