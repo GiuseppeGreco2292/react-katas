@@ -122,6 +122,10 @@ main {
   padding: 15px 25px;
 }
 
+#home-train-btn-mobile {
+  display: none;
+}
+
 @media screen and (max-width: 800px) {
   h1 {
     font-size: 32px;
@@ -136,12 +140,37 @@ main {
   main {
     margin-top: var(--small-margin);
     display: grid;
-    grid-template-columns: 1fr minmax(300, 3fr) 1fr;
+    grid-template-columns: 10% 80% 10%;
+  }
+
+  #select-h2 {
+    display: none;
+  }
+
+  #select-counter {
+    text-align: left;
+    margin-left: var(--small-margin);
   }
 
   #info-section {
     display: none;
   }
+
+  .home-train-btn {
+    margin-top: 22px;
+    font-size: 20px;
+  }
+
+  #home-train-btn-mobile {
+    display: block;
+    margin: 0px;
+    position: fixed;
+    top: 90%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+  }
+
 }
 
 .key-display {

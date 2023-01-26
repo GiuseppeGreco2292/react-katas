@@ -8,7 +8,7 @@ import demoData from '../demo-data.json';
 export const Home = () => {
     const [activeId, setActiveId] = useState(null);
     const katas = demoData.katas;
-    const activeKata = activeId ? katas.find((kata) => kata.id == activeId) : null;
+    const activeKata = activeId ? katas.find((kata) => kata.id === activeId) : null;
 
     return (
         <React.Fragment>
@@ -37,13 +37,21 @@ function KataSelect({ katas, activeId, setActive }) {
             languages={languages}
             handleClick={setActive}
             isActive={isActive}
-        />;
+        />
     });
+
+    const trainBtn = activeId ?
+        <Link to={"/kata-nav/" + activeId}>
+            <button id="home-train-btn-mobile" className='home-train-btn'>Train</button>
+        </Link>
+        : null;
 
     return (
         <section className='home-section' id="select-section">
-            <h2>Select Kata</h2>
+            <h2 id="select-h2">Select Kata</h2>
+            <h2 id="select-counter">{katas.length} Katas</h2>
             {options}
+            {trainBtn}
         </section>
     );
 }
@@ -51,7 +59,7 @@ function KataSelect({ katas, activeId, setActive }) {
 function KataInfo({ activeKata }) {
     const info = formatInfo(activeKata);
     const trainBtn = activeKata ?
-        <Link to={"/kata-nav/" + activeKata.id} >
+        <Link to={"/kata-nav/" + activeKata.id}>
             <button className="home-train-btn" type="button">Train</button>
         </Link> :
         null;
@@ -77,8 +85,8 @@ function formatInfo(kata) {
             null;
         const languages = <InfoRow type="languages" value={extractLanguages(kata)} />;
         const steps = <InfoRow type="steps" value={kata.steps.length} />;
-        const questions = <InfoRow type="questions" value={hasNestedProperty(kata.steps, 'questions') ? '✓' : '✗'} />;
-        const hints = <InfoRow type="hints" value={hasNestedProperty(kata.steps, 'hints') ? '✓' : '✗'} />;
+        const questions = <InfoRow type="questions" value={hasPropertyInSteps(kata.steps, 'questions') ? '✓' : '✗'} />;
+        const hints = <InfoRow type="hints" value={hasPropertyInSteps(kata.steps, 'hints') ? '✓' : '✗'} />;
 
         info = <React.Fragment>
             {name}
@@ -115,10 +123,9 @@ function extractLanguages(kata) {
     return languages;
 }
 
-function hasNestedProperty(haystack, needle) {
+function hasPropertyInSteps(haystack, needle) {
     let result = false;
     haystack.forEach(step => {
-        console.log(step);
         if (step.hasOwnProperty(needle)) result = true;
     });
 
