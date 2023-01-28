@@ -6,7 +6,6 @@ import MarkdownView from 'react-showdown';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import demoData from '../demo-data.json';
-import { Header } from '../components/header';
 
 export const KataNavigator = () => {
     const [stepNumber, setStep] = useState(0);
@@ -33,7 +32,11 @@ export const KataNavigator = () => {
 
     return (
         <main className="kata-main">
-            <h1 className="kata-h1">{kata.name}</h1>
+            <h1 className="kata-h1">
+                <Link to="/"><span className="h1-icon"></span></Link>
+                {kata.name}
+            </h1>
+            <h2 className="kata-step-name">{step.name}</h2>
             <Instructions step={step} />
             <Solution step={step} />
             <Navigation handleNavigation={navigateSteps} stepNumber={stepNumber} />
@@ -46,9 +49,7 @@ function Instructions(props) {
 
     return (
         <section className="kata-section">
-            <h2 class="instructions-h2">{props.step.name}</h2>
             {hints}
-            <p><i>Placeholder for Instructions</i></p>
         </section>
     );
 }
@@ -64,7 +65,6 @@ function Solution(props) {
                 wrapLongLines={true}
             >{props.step.solution.code}</SyntaxHighlighter>
             {questions}
-            <p><i>Placeholder for Solution</i></p>
         </section>
     );
 }
@@ -100,13 +100,12 @@ function Navigation(props) {
                 <KeyIcon keyboard="←" explanation="Previous Step" />
                 <KeyIcon keyboard="→" explanation="Next Step" />
             </nav>
-            <p><em>Placeholder for Navigation</em></p>
         </section>
     );
 }
 
 function getHints(step) {
-    if (!step.hints) return "";
+    if (!step.hints) return <p><i>No further instructions provided for this step</i></p>;
 
     const hints = step.hints.map((hint, index) => {
         const markdown = <MarkdownView
@@ -115,7 +114,7 @@ function getHints(step) {
         />
 
         return (
-            <li key={index}><i>{markdown}</i></li>
+            <li key={index}>{markdown}</li>
         );
     });
 
